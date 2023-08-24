@@ -8,7 +8,7 @@
   "workspaces": [
     "packages/*"
   ],
-  "changelog": {
-    "repo": "asilas-soap/lerna-started-example"
+  "dependencies": {
+    "conventional-recommended-bump": "^7.0.1"
   }
 }
