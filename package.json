@@ -1,10 +1,14 @@
 {
   "name": "root",
   "private": true,
+  "version": "0.1.0",
   "devDependencies": {
     "lerna": "^6.3.0"
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "changelog": {
+    "repo": "asilas-soap/lerna-started-example"
+  }
 }
