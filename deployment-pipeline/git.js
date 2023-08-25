@@ -28,7 +28,7 @@ module.exports = new (class Git {
    */
   exec = (command) => new Promise(async (resolve, reject) => {
     await exec(`git ${command}`, (error, stdout, stderr) => {
-      console.log(stdout);
+      console.log("git output:", stdout);
       resolve(stdout);
     });
   })
@@ -75,7 +75,6 @@ module.exports = new (class Git {
     }
 
     args.push('--tags')
-    // args.push(core.getInput('git-pull-method'))
 
     return this.exec(args.join(' '))
   }

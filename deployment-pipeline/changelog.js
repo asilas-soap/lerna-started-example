@@ -22,11 +22,12 @@ async function generateChangelogString(version, tagPrefix) {
 async function generateChangelog(changelogOutput, version, tagPrefix) {
     return new Promise(async (resolve) => {
         const log = await generateChangelogString(version, tagPrefix);
+        console.log("log", log);
         // Removes the version number from the changelog
         const cleanLog = log.split('\n').slice(3).join('\n').trim();
         if (cleanLog === '') {
             console.log("Changelog is empty. Operation will be skipped.");
-            resolve(false);
+            resolve();
         }
 
         const stream = getChangelogStream();
@@ -58,7 +59,7 @@ async function generateChangelog(changelogOutput, version, tagPrefix) {
             } else {
                 // All stream pipes have completed
                 writeStream.end();
-                resolve(true);
+                resolve();
             }
         }
 

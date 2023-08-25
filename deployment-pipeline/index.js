@@ -11,17 +11,15 @@ async function runSteps(error, bumpRecommendation) {
   const baseDir = path.join(process.cwd(), "..");
   const fileChangelog = path.join(process.cwd(), "..", "CHANGELOG.md");
   const filePackageJson = path.join(process.cwd(), "..", "package.json");
-  const branch = "main"; 
+
+  const branch = "main";
 
   const bump = bumpVersion(filePackageJson, bumpRecommendation.releaseType);
 
   await git2.pull();
-  
+
   const newVersion = bump.getNextVersion();
-  const changelogResult = await generateChangelog(fileChangelog, newVersion, "v");
-  if (!changelogResult) {
-    return;
-  }
+  await generateChangelog(fileChangelog, newVersion, "v");
 
   bump.updateToNextVersion();
 
