@@ -31,11 +31,11 @@ module.exports = new (class Git {
 
       if (stderr) {
         console.log(`Command git ${command} got this error: ${stderr}`);
-        reject()
+        reject();
+        return;
       }
       console.log("git output:", stdout);
       resolve(stdout);
-      
     });
   })
 
