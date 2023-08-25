@@ -28,8 +28,18 @@ class GitCommands {
     }
 
     async pull() {
-        const result = (await this.git.pull(["--tags", "--ff-only"])).summary;
+        const args= ["--tags", "--ff-only"];
+        if (await this.isShallow()) {
+            args.push("--unshallow");
+        }
+        const result = (await this.git.pull(args.join(" "))).summary;
         console.log(result);
+    }
+
+    async isShallow() {
+        const result = await this.git.revparse(["--is-shallow-repository"]);
+        console.log(result);
+        return result.trim().replace('\n', '') === 'true';
     }
 
     async push() {
