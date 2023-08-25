@@ -28,7 +28,7 @@ async function runSteps(error, bumpRecommendation) {
 
   bump.updateToNextVersion();
 
-  git2.add(".");
+  git2.add("../");
   git2.commit(`chore(release): ${newVersion}`);
   git2.createTag(`v${newVersion}`);
   git2.push(branch);
