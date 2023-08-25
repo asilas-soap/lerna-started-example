@@ -1,0 +1,74 @@
+const conventionalChangelog = require('conventional-changelog');
+const fs = require('fs')
+const { Readable } = require('stream');
+
+function getChangelogStream() {
+    return conventionalChangelog({ preset: 'angular' });
+}
+
+async function generateChangelogString() {
+    return new Promise((resolve) => {
+        const stream = getChangelogStream();
+        let changelog = '';
+
+        stream
+            .on('data', (data) => {
+                changelog += data.toString()
+            })
+            .on('end', () => resolve(changelog));
+    });
+}
+
+/**
+ * 
+ * @param {string} changelogOutput Path to a changelog output file 
+ * @returns 
+ */
+async function generateChangelog(changelogOutput) {
+    return new Promise((resolve) => {
+        const log = generateChangelogString();
+        if (log === '') {
+            console.log("Changelog is empty. Operation will be skipped.");
+            return;
+        }
+
+        console.log("log value");
+
+        const stream = getChangelogStream();
+        // The default changelog output to be streamed first
+        const readStreams = [stream];
+
+        // if a changelog output file already exists
+        // preserve its content
+        if (fs.existsSync(changelogOutput)) {
+            const buffer = fs.readFileSync(changelogOutput);
+            const readableStream = Readable.from(buffer);
+            // add the stream as the next item for later pipe
+            readStreams.push(readableStream);
+        }
+
+        const writeStream = fs.createWriteStream(changelogOutput)
+        let currentIndex = 0;
+
+        function pipeNextStream() {
+            if (currentIndex < readStreams.length) {
+                const currentStream = readStreams[currentIndex];
+
+                currentStream.pipe(writeStream, { end: false });
+
+                currentStream.once('end', () => {
+                    currentIndex++;
+                    pipeNextStream();
+                });
+            } else {
+                // All stream pipes have completed
+                writeStream.end();
+                resolve();
+            }
+        }
+
+        pipeNextStream();
+    });
+}
+
+module.exports = generateChangelog;
