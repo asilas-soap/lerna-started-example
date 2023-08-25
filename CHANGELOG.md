@@ -1,4 +1,4 @@
-# [0.2.0](https://github.com/asilas-soap/lerna-started-example/compare/v0.1.0...v0.2.0) (2023-08-25)
+# [0.3.0](https://github.com/asilas-soap/lerna-started-example/compare/v0.1.0...v0.3.0) (2023-08-25)
 
 
 ### Bug Fixes
