@@ -30,7 +30,7 @@ module.exports = new (class Git {
     await exec(`git ${command}`, (error, stdout, stderr) => {
 
       if (stderr) {
-        console.log(stderr);
+        console.log(`Command git ${command} got this error: ${stderr}`);
         reject()
       }
       console.log("git output:", stdout);
