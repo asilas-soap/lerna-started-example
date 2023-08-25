@@ -25,8 +25,8 @@ async function generateChangelogString() {
  * @returns 
  */
 async function generateChangelog(changelogOutput) {
-    return new Promise((resolve) => {
-        const log = generateChangelogString();
+    return new Promise(async (resolve) => {
+        const log = await generateChangelogString();
         // Removes the version number from the changelog
         const cleanLog = log.split('\n').slice(3).join('\n').trim();
         if (cleanLog === '') {
