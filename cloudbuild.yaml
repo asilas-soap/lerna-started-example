@@ -1,0 +1,9 @@
+steps:
+
+- name: node
+  entrypoint: yarn
+  args: ['install']
+
+- name: node
+  args: ['index.js']
+  dir: "deployment-pipeline"

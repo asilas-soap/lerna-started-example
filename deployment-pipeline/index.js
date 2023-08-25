@@ -8,9 +8,9 @@ const gitCommands = require('./gitCommands');
 async function runSteps(error, bumpRecommendation) {
   if (error) throw error;
 
-  const baseDir = path.join(process.cwd(), "../..");
-  const fileChangelog = path.join(process.cwd(), "../..", "CHANGELOG.md");
-  const filePackageJson = path.join(process.cwd(), "../..", "package.json");
+  const baseDir = path.join(process.cwd(), "..");
+  const fileChangelog = path.join(process.cwd(), "..", "CHANGELOG.md");
+  const filePackageJson = path.join(process.cwd(), "..", "package.json");
   const branch = "main"; 
 
   const git = gitCommands(baseDir, branch);
