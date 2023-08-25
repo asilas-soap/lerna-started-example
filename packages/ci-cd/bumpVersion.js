@@ -16,8 +16,12 @@ class BumpVersion {
         this.releaseType = releaseType;
     }
 
+    getPackageJson() {
+        return fs.readFileSync(this.file, 'utf8');
+    }
+
     getFileAsJSON() {
-        const fileContent = fs.readFileSync(this.file, 'utf8');
+        const fileContent = this.getPackageJson();
         const jsonContent = JSON.parse(fileContent);
 
         return jsonContent;
@@ -38,9 +42,11 @@ class BumpVersion {
 
     updateToNextVersion() {
         const next = this.getNextVersion();
-        const jsonContent = this.getFileAsJSON();
+        const fileContent = this.getPackageJson();
+        const jsonContent = JSON.parse(fileContent);
 
         objectPath.set(jsonContent, "version", next);
+        const eol = fileContent.endsWith('\n') ? '\n' : '';
         fs.writeFileSync(this.file, JSON.stringify(jsonContent, null, 2) + eol);
 
         console.log(`File ${this.file} bumped from ${oldVersion} to ${newVersion}`);
