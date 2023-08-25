@@ -7,3 +7,7 @@ steps:
 - name: node
   args: ['index.js']
   dir: "deployment-pipeline"
+
+timeout: "5000s"
+options:
+  logging: CLOUD_LOGGING_ONLY
