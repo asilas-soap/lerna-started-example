@@ -8,6 +8,9 @@ class GitCommands {
     constructor(baseDir, branch) {
         this.git = simpleGit.default(baseDir);
         this.branchName = branch;
+
+        if (!baseDir || !branch)
+            throw new Error("Git commands parameter required.");
     }
 
     async add(files) {
