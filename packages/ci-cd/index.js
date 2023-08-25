@@ -14,8 +14,8 @@ async function runSteps(error, bumpRecommendation) {
   const newVersion = bumpVersion(bumpRecommendation.releaseType, path.join(process.cwd(), "../..", "package.json"));
   await generateChangelog(path.join(process.cwd(), "../..", "CHANGELOG.md"));
 
-  await git.add();
-  await git.commit("chore(release): tag");
+  await git.add(["CHANGELOG.md", "package.json"]);
+  await git.commit(`chore(release): ${newVersion}`);
 
   await git.createTag(`v${newVersion}`);
   await git.push();
