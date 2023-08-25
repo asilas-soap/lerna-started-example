@@ -1,19 +1,10 @@
 steps:
 
-- name: node
-  entrypoint: yarn
-  args: ['install']
-
 # - name: "gcr.io/cloud-builders/git"
 #   args: ["remote", "set-url", "origin", "https://asilas-soap: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@github.com/$REPO_FULL_NAME.git"]
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
   entrypoint: 'git'
-  args: ['remote',  "set-url", "origin", 'https://asilas-soap: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@github.com/$REPO_FULL_NAME.git']
-
-# - name: "gcr.io/cloud-builders/git"
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-  entrypoint: 'git'
-  args: ["fetch"]
+  args: ['clone', 'https://asilas-soap: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@github.com/$REPO_FULL_NAME.git']
 
 # - name: "gcr.io/cloud-builders/git"
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
@@ -23,6 +14,10 @@ steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
   entrypoint: 'git'
   args: ["pull", "--unshallow", "--tags", "--ff-only"]
+
+- name: node
+  entrypoint: yarn
+  args: ['install']
 
 # - name: "gcr.io/cloud-builders/git"
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
