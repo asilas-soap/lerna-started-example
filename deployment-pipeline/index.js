@@ -25,10 +25,10 @@ async function runSteps(error, bumpRecommendation) {
 
   bump.updateToNextVersion();
 
-  git2.add("../");
-  git2.commit(`chore(release): ${newVersion}`);
-  git2.createTag(`v${newVersion}`);
-  git2.push(branch);
+  await git2.add("../");
+  await git2.commit(`chore(release): ${newVersion}`);
+  await git2.createTag(`v${newVersion}`);
+  await git2.push(branch);
 }
 
 conventionalRecommendedBump({ preset: `angular` }, runSteps);
