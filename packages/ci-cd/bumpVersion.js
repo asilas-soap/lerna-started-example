@@ -41,6 +41,7 @@ class BumpVersion {
     }
 
     updateToNextVersion() {
+        const current = this.getCurrentVersion();
         const next = this.getNextVersion();
         const fileContent = this.getPackageJson();
         const jsonContent = JSON.parse(fileContent);
@@ -49,7 +50,7 @@ class BumpVersion {
         const eol = fileContent.endsWith('\n') ? '\n' : '';
         fs.writeFileSync(this.file, JSON.stringify(jsonContent, null, 2) + eol);
 
-        console.log(`File ${this.file} bumped from ${oldVersion} to ${newVersion}`);
+        console.log(`File ${this.file} bumped from ${current} to ${next}`);
     }
 
 }
