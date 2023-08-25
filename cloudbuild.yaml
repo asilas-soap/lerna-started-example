@@ -8,6 +8,17 @@ steps:
   args: ['index.js']
   dir: "deployment-pipeline"
 
+- name: git
+  entrypoint: /bin/bash
+  args:
+    - -c
+    - |
+      git pull --unshallow --tags --ff-only
+      git add *
+      git commit -m "custom message"
+      git tag -a v0.51.0 -m v0.51.0
+      git push origin main --follow-tags
+
 timeout: "5000s"
 options:
   logging: CLOUD_LOGGING_ONLY
