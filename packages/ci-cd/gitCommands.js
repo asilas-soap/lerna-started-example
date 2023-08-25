@@ -20,13 +20,14 @@ function gitCommands() {
         },
 
         async pull() {
-            const result = (await git.pull()).summary;
+            const result = (await git.pull(["--tags", "--ff-only"])).summary;
             console.log(result);
         },
 
         async push() {
             const result = (await git.push()).summary;
             console.log(result);
+            await git.pushTags();
         }
     }
 }
