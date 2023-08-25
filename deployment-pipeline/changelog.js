@@ -3,7 +3,7 @@ const fs = require('fs')
 const { Readable } = require('stream');
 
 function getChangelogStream(version, tagPrefix) {
-    return conventionalChangelog({ preset: 'angular' });
+    return conventionalChangelog({ preset: 'angular' }, { version, currentTag: `${tagPrefix}${version}` }, { path: ".." });
 }
 
 async function generateChangelogString(version, tagPrefix) {
@@ -36,12 +36,12 @@ async function generateChangelog(changelogOutput, version, tagPrefix) {
 
         // if a changelog output file already exists
         // preserve its content
-        // if (fs.existsSync(changelogOutput)) {
-        //     const buffer = fs.readFileSync(changelogOutput);
-        //     const readableStream = Readable.from(buffer);
-        //     // add the stream as the next item for later pipe
-        //     readStreams.push(readableStream);
-        // }
+        if (fs.existsSync(changelogOutput)) {
+            const buffer = fs.readFileSync(changelogOutput);
+            const readableStream = Readable.from(buffer);
+            // add the stream as the next item for later pipe
+            readStreams.push(readableStream);
+        }
 
         const writeStream = fs.createWriteStream(changelogOutput)
         let currentIndex = 0;
