@@ -6,7 +6,7 @@ class GitCommands {
     branchName = '';
 
     constructor(baseDir, branch) {
-        this.git = simpleGit.default(baseDir);
+        this.git = simpleGit.default({ baseDir });
         this.branchName = branch;
 
         if (!baseDir || !branch)
