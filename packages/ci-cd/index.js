@@ -8,9 +8,9 @@ const git = require('./gitCommands');
 async function runSteps(error, bumpRecommendation) {
   if (error) throw error;
 
-  // await git.pull();
-  // const newVersion = bumpVersion(bumpRecommendation.releaseType, path.join(process.cwd(), "../..", "package.json"));
-  // await generateChangelog(path.join(process.cwd(), "../..", "CHANGELOG.md"));
+  await git.pull();
+  const newVersion = bumpVersion(bumpRecommendation.releaseType, path.join(process.cwd(), "../..", "package.json"));
+  await generateChangelog(path.join(process.cwd(), "../..", "CHANGELOG.md"));
 
   await git.add();
   await git.commit("chore(release): tag");
