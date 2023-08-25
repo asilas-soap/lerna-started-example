@@ -3,9 +3,11 @@ const simpleGit = require("simple-git");
 
 class GitCommands {
     git = simpleGit.default();
+    branchName = '';
 
-    constructor(baseDir) {
+    constructor(baseDir, branch) {
         this.git = simpleGit.default(baseDir);
+        this.branchName = branch;
     }
 
     async add(files) {
@@ -28,10 +30,9 @@ class GitCommands {
     }
 
     async push() {
-        const result = (await this.git.push()).summary;
+        const result = (await this.git.push("origin", this.branchName, ["--follow-tags"])).summary;
         console.log(result);
-        await this.git.pushTags();
     }
 }
 
-module.exports = (baseDir) => new GitCommands(baseDir); 
+module.exports = (baseDir, branch) => new GitCommands(baseDir, branch); 

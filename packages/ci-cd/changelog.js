@@ -27,12 +27,12 @@ async function generateChangelogString() {
 async function generateChangelog(changelogOutput) {
     return new Promise((resolve) => {
         const log = generateChangelogString();
-        if (log === '') {
+        // Removes the version number from the changelog
+        const cleanLog = log.split('\n').slice(3).join('\n').trim();
+        if (cleanLog === '') {
             console.log("Changelog is empty. Operation will be skipped.");
-            return;
+            resolve(false);
         }
-
-        console.log("log value");
 
         const stream = getChangelogStream();
         // The default changelog output to be streamed first
@@ -63,7 +63,7 @@ async function generateChangelog(changelogOutput) {
             } else {
                 // All stream pipes have completed
                 writeStream.end();
-                resolve();
+                resolve(true);
             }
         }
 
