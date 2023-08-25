@@ -1,41 +1,10 @@
-## [0.3.1](https://github.com/asilas-soap/lerna-started-example/compare/v0.3.0...v0.3.1) (2023-08-25)
+## [0.3.2](https://github.com/asilas-soap/lerna-started-example/compare/v0.3.1...v0.3.2) (2023-08-25)
 
 
 ### Bug Fixes
 
-* add new files for git ([34fa271](https://github.com/asilas-soap/lerna-started-example/commit/34fa271c264244796920b464144c2165a0e07732))
-
-
-
-# [0.3.0](https://github.com/asilas-soap/lerna-started-example/compare/v0.1.0...v0.3.0) (2023-08-25)
-
-
-### Bug Fixes
-
-* added changelog file ([e520539](https://github.com/asilas-soap/lerna-started-example/commit/e5205395a23c6184ba63313a90599beecc94d5eb))
-* **header:** add forced commit msg ([74d9f81](https://github.com/asilas-soap/lerna-started-example/commit/74d9f815886725c4814db50cd0af1c7b14562939))
-* update version to 1 ([999a092](https://github.com/asilas-soap/lerna-started-example/commit/999a092033a565f0258e5f474a5fbdf2dd7cea88))
-
-
-### Features
-
-* added recommended ([a21c78b](https://github.com/asilas-soap/lerna-started-example/commit/a21c78bf054c503a00c2508a6d5f47d4a4c6bf7b))
-
-
-
-# [0.2.0](https://github.com/asilas-soap/lerna-started-example/compare/v0.1.0...v0.2.0) (2023-08-25)
-
-
-### Bug Fixes
-
-* added changelog file ([e520539](https://github.com/asilas-soap/lerna-started-example/commit/e5205395a23c6184ba63313a90599beecc94d5eb))
-* **header:** add forced commit msg ([74d9f81](https://github.com/asilas-soap/lerna-started-example/commit/74d9f815886725c4814db50cd0af1c7b14562939))
-* update version to 1 ([999a092](https://github.com/asilas-soap/lerna-started-example/commit/999a092033a565f0258e5f474a5fbdf2dd7cea88))
-
-
-### Features
-
-* added recommended ([a21c78b](https://github.com/asilas-soap/lerna-started-example/commit/a21c78bf054c503a00c2508a6d5f47d4a4c6bf7b))
+* changelog string ([8993dfb](https://github.com/asilas-soap/lerna-started-example/commit/8993dfbc40813e151d06d38b7a4d1b3a891c7b46))
+* remove console.log ([e7bf30e](https://github.com/asilas-soap/lerna-started-example/commit/e7bf30ed14c85a5a7cd9aa245d80d11170a06955))
 
 
 
