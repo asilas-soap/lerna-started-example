@@ -4,20 +4,36 @@ steps:
   entrypoint: yarn
   args: ['install']
 
+- name: "gcr.io/cloud-builders/git"
+  args: ["remote", "set-url", "origin", "https://asilas-soap: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@github.com/$REPO_FULL_NAME.git"]
+
+- name: "gcr.io/cloud-builders/git"
+  args: ["fetch"]
+
+- name: "gcr.io/cloud-builders/git"
+  args: ["checkout", "$BRANCH_NAME"]
+
+- name: "gcr.io/cloud-builders/git"
+  args: ["config", "--global", "user.email", "asilas@soap.health"]
+
+- name: "gcr.io/cloud-builders/git"
+  args: ["config", "--global", "user.name", "Alberto Silas"] 
+
 - name: node
   args: ['index.js']
   dir: "deployment-pipeline"
 
-- name: git
-  entrypoint: /bin/bash
-  args:
-    - -c
-    - |
-      git pull --unshallow --tags --ff-only
-      git add *
-      git commit -m "custom message"
-      git tag -a v0.51.0 -m v0.51.0
-      git push origin main --follow-tags
+- name: "gcr.io/cloud-builders/git"
+  args: ["add", "."]
+
+- name: "gcr.io/cloud-builders/git"
+  args: ["commit", "-m", "message c"]
+
+- name: "gcr.io/cloud-builders/git"
+  args: ["tag", "-a", "v0.51.0", "-m", "v0.51.0"]
+
+- name: "gcr.io/cloud-builders/git"
+  args: ["push", "origin", "main", "--follow-tags"]
 
 timeout: "5000s"
 options:
