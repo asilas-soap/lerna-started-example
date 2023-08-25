@@ -5,7 +5,7 @@ steps:
   args: ['install']
 
 - name: "gcr.io/cloud-builders/git"
-  args: ["remote", "set-url", "origin", "https://asilas-soap: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@github.com/$REPO_FULL_NAME.git"]
+  args: ["remote", "set-url", "origin", "https://asilas-soap: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@github.com/$REPO_FULL_NAME.git"]
 
 - name: "gcr.io/cloud-builders/git"
   args: ["fetch"]
