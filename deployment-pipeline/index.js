@@ -19,7 +19,8 @@ async function runSteps(error, bumpRecommendation) {
   await git2.pull();
 
   const newVersion = bump.getNextVersion();
-  await generateChangelog(fileChangelog, newVersion, "v");
+  const result = await generateChangelog(fileChangelog, newVersion, "v");
+  if (!result) return;
 
   bump.updateToNextVersion();
 

@@ -27,7 +27,7 @@ async function generateChangelog(changelogOutput, version, tagPrefix) {
         const cleanLog = log.split('\n').slice(3).join('\n').trim();
         if (cleanLog === '') {
             console.log("Changelog is empty. Operation will be skipped.");
-            resolve();
+            resolve(false);
         }
 
         const stream = getChangelogStream();
@@ -59,7 +59,7 @@ async function generateChangelog(changelogOutput, version, tagPrefix) {
             } else {
                 // All stream pipes have completed
                 writeStream.end();
-                resolve();
+                resolve(true);
             }
         }
 
