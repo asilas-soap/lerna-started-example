@@ -22,7 +22,7 @@ steps:
   
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
   entrypoint: 'git'
-  args: [" pull", "--unshallow", "--tags", "--ff-only"]
+  args: ["pull", "--unshallow", "--tags", "--ff-only"]
 
 # - name: "gcr.io/cloud-builders/git"
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
