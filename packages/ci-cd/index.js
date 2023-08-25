@@ -2,11 +2,13 @@ const conventionalRecommendedBump = require(`conventional-recommended-bump`);
 const bumpVersion = require('./bumpVersion');
 const generateChangelog = require('./changelog');
 const path = require('path');
-const git = require('./gitCommands');
+const gitCommands = require('./gitCommands');
 
 
 async function runSteps(error, bumpRecommendation) {
   if (error) throw error;
+
+  const git = gitCommands(path.join(process.cwd(), "../.."));
 
   await git.pull();
   const newVersion = bumpVersion(bumpRecommendation.releaseType, path.join(process.cwd(), "../..", "package.json"));
