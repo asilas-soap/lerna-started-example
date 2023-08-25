@@ -5,23 +5,28 @@ const git = simpleGit.default();
 function gitCommands() {
     return {
         async add() {
-            return (await git.add("."));
+            const result = (await git.add("."));
+            console.log(result);
         },
 
         async commit(message) {
-            return (await git.commit(message)).summary;
+            const result = (await git.commit(message)).summary;
+            console.log(result);
         },
 
         async createTag(value) {
-            return (await git.addTag(value)).name;
+            const result = (await git.addTag(value)).name;
+            console.log(result);
         },
 
         async pull() {
-            return (await git.pull()).summary;
+            const result = (await git.pull()).summary;
+            console.log(result);
         },
 
         async push() {
-            return (await git.push()).summary;
+            const result = (await git.push()).summary;
+            console.log(result);
         }
     }
 }
