@@ -8,7 +8,6 @@ const git2 = require('./git');
 async function runSteps(error, bumpRecommendation) {
   if (error) throw error;
 
-  const baseDir = path.join(process.cwd(), "..");
   const fileChangelog = path.join(process.cwd(), "..", "CHANGELOG.md");
   const filePackageJson = path.join(process.cwd(), "..", "package.json");
 
