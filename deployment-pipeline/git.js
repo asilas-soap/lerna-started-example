@@ -28,8 +28,14 @@ module.exports = new (class Git {
    */
   exec = (command) => new Promise(async (resolve, reject) => {
     await exec(`git ${command}`, (error, stdout, stderr) => {
+
+      if (stderr) {
+        console.log(stderr);
+        reject()
+      }
       console.log("git output:", stdout);
       resolve(stdout);
+      
     });
   })
 
