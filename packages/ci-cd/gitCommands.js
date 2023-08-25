@@ -9,8 +9,7 @@ class GitCommands {
     }
 
     async add(files) {
-        const result = (await this.git.add(files));
-        console.log(result);
+        (await this.git.add(files));
     }
 
     async commit(message) {
