@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/asilas-soap/lerna-started-example/compare/v0.3.0...v0.3.1) (2023-08-25)
+
+
+### Bug Fixes
+
+* add new files for git ([34fa271](https://github.com/asilas-soap/lerna-started-example/commit/34fa271c264244796920b464144c2165a0e07732))
+
+
+
 # [0.3.0](https://github.com/asilas-soap/lerna-started-example/compare/v0.1.0...v0.3.0) (2023-08-25)
 
 
