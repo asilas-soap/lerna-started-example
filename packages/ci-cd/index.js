@@ -8,14 +8,23 @@ const gitCommands = require('./gitCommands');
 async function runSteps(error, bumpRecommendation) {
   if (error) throw error;
 
-  const git = gitCommands(path.join(process.cwd(), "../.."), "main");
+  const baseDir = path.join(process.cwd(), "../..");
+  const fileChangelog = path.join(process.cwd(), "../..", "CHANGELOG.md");
+  const filePackageJson = path.join(process.cwd(), "../..", "package.json");
+  const branch = "main"; 
+
+  const git = gitCommands(baseDir, branch);
+  const bump = bumpVersion(filePackageJson, bumpRecommendation.releaseType);
 
   await git.pull();
-  const newVersion = bumpVersion(bumpRecommendation.releaseType, path.join(process.cwd(), "../..", "package.json"));
-  const changelogResult = await generateChangelog(path.join(process.cwd(), "../..", "CHANGELOG.md"));
+  
+  const newVersion = bump.getNextVersion();
+  const changelogResult = await generateChangelog(fileChangelog, newVersion, "v");
   if (!changelogResult) {
     return;
   }
+
+  bump.updateToNextVersion();
 
   await git.add(["CHANGELOG.md", "package.json"]);
   await git.commit(`chore(release): ${newVersion}`);

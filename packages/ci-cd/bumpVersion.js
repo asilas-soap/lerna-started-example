@@ -1,32 +1,51 @@
 const fs = require('fs');
 const semver = require('semver');
 const objectPath = require('object-path');
+const path = require('path');
 
+class BumpVersion {
+    file = '';
+    releaseType = '';
 
-/**
- * 
- * @param {*} releaseType Release type (major, minor, patch)
- * @param {*} fileLocation Path to package.json file
- * @returns new version number
- */
-function bumpVersion(releaseType, fileLocation) {
-    if (!fs.existsSync(fileLocation)) {
-        throw new Error("File location not found.");
+    constructor(fileVersion, releaseType) {
+        if (!fs.existsSync(fileVersion)) {
+            throw new Error("File location not found.");
+        }
+
+        this.file = fileVersion;
+        this.releaseType = releaseType;
     }
 
-    const fileContent = fs.readFileSync(fileLocation, 'utf8');
-    const eol = fileContent.endsWith('\n') ? '\n' : '';
-    const jsonContent = JSON.parse(fileContent);
+    getFileAsJSON() {
+        const fileContent = fs.readFileSync(this.file, 'utf8');
+        const jsonContent = JSON.parse(fileContent);
 
-    const oldVersion = objectPath.get(jsonContent, "version", null);
-    const newVersion = semver.inc(oldVersion, releaseType);
+        return jsonContent;
+    }
 
-    objectPath.set(jsonContent, "version", newVersion);
-    fs.writeFileSync(fileLocation, JSON.stringify(jsonContent, null, 2) + eol);
+    getCurrentVersion() {
+        const version = objectPath.get(this.getFileAsJSON(), "version", null);
+        return version;
+    }
 
-    console.log(`Version bump from ${oldVersion} to ${newVersion}`);
-    
-    return newVersion;
+
+    getNextVersion() {
+        const current = this.getCurrentVersion();
+        const newVersion = semver.inc(current, this.releaseType);
+
+        return newVersion;
+    }
+
+    updateToNextVersion() {
+        const next = this.getNextVersion();
+        const jsonContent = this.getFileAsJSON();
+
+        objectPath.set(jsonContent, "version", next);
+        fs.writeFileSync(this.file, JSON.stringify(jsonContent, null, 2) + eol);
+
+        console.log(`File ${this.file} bumped from ${oldVersion} to ${newVersion}`);
+    }
+
 }
 
-module.exports = bumpVersion;
+module.exports = (fileVersion, releaseType) => new BumpVersion(fileVersion, releaseType);

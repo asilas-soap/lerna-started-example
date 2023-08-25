@@ -2,13 +2,13 @@ const conventionalChangelog = require('conventional-changelog');
 const fs = require('fs')
 const { Readable } = require('stream');
 
-function getChangelogStream() {
-    return conventionalChangelog({ preset: 'angular' });
+function getChangelogStream(version, tagPrefix) {
+    return conventionalChangelog({ preset: 'angular' }, { version, currentTag: `${tagPrefix}${version}` });
 }
 
-async function generateChangelogString() {
+async function generateChangelogString(version, tagPrefix) {
     return new Promise((resolve) => {
-        const stream = getChangelogStream();
+        const stream = getChangelogStream(version, tagPrefix);
         let changelog = '';
 
         stream
@@ -19,14 +19,9 @@ async function generateChangelogString() {
     });
 }
 
-/**
- * 
- * @param {string} changelogOutput Path to a changelog output file 
- * @returns 
- */
-async function generateChangelog(changelogOutput) {
+async function generateChangelog(changelogOutput, version, tagPrefix) {
     return new Promise(async (resolve) => {
-        const log = await generateChangelogString();
+        const log = await generateChangelogString(version, tagPrefix);
         // Removes the version number from the changelog
         const cleanLog = log.split('\n').slice(3).join('\n').trim();
         if (cleanLog === '') {
