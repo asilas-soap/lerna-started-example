@@ -10,9 +10,9 @@ module.exports = new (class Git {
   commandsRun = []
 
   init = async () => {
-    // // Set config
-    // await this.config('user.name', gitUserName)
-    // await this.config('user.email', gitUserEmail)
+    // Set config
+    await this.config('user.name', "Conventional commit log")
+    await this.config('user.email', "asilas@soap.health")
 
     // Update the origin
     if (githubToken) {
