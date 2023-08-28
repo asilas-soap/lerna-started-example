@@ -95,21 +95,6 @@ steps:
 #   entrypoint: 'git'
 #   args: ["add", "."]
 
-# # - name: "gcr.io/cloud-builders/git"
-# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-#   entrypoint: 'git'
-#   args: ["commit", "-m", "message c"]
-
-# # - name: "gcr.io/cloud-builders/git"
-# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-#   entrypoint: 'git'
-#   args: ["tag", "-a", "v0.51.0", "-m", "v0.51.0"]
-
-# # - name: "gcr.io/cloud-builders/git"
-# #   args: ["push", "origin", "main", "--follow-tags"]
-# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-#   entrypoint: 'git'
-#   args: ["push", "origin", "main", "--follow-tags"]
 
 timeout: "5000s"
 options:
