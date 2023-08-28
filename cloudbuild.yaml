@@ -26,6 +26,7 @@ steps:
   args:
   - '-c'
   - |
+    git pull origin main
     git checkout main
     git status
     echo "install"
