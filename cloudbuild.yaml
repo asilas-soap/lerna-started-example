@@ -11,7 +11,6 @@ steps:
     "SSH_KEY",
     "--out-file=/root/.ssh/id_github"
   ]
-  dir: "packages/libs/database/prisma"
   volumes:
   - name: 'ssh'
     path: /root/.ssh
@@ -37,8 +36,9 @@ steps:
   args:
   - '-c'
   - |
-    git clone --depth 1 git@github.com:asilas-soap/lerna-started-example.git .
+    git remote set-url origin git@github.com:asilas-soap/lerna-started-example.git
     git checkout main
+    git pull origin main
     git config user.name Conventional Commit
     git config user.email asilas@soap.health
     ls
