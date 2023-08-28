@@ -1,0 +1,101 @@
+steps:
+
+# Access the id_github file from Secret Manager
+- name: "gcr.io/cloud-builders/gcloud"
+  args: [
+    "secrets",
+    "versions",
+    "access",
+    "latest",
+    "--secret",
+    "SSH_KEY",
+    "--out-file=/root/.ssh/id_github"
+  ]
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
+
+# Set up git with key and domain
+- name: 'gcr.io/cloud-builders/git'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    chmod 600 /root/.ssh/id_github
+    cat <<EOF >/root/.ssh/config
+    Hostname github.com
+    IdentityFile /root/.ssh/id_github
+    EOF
+    ssh-keyscan -t rsa github.com > /root/.ssh/known_hosts
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
+
+- name: node
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    git config --global credential.helper cache
+    git pull origin main
+    git checkout main
+    ls
+    git status
+    echo "install"
+    yarn install
+    ls
+    node ./deployment-pipeline/index.js
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
+
+
+# - name: node
+#   entrypoint: yarn
+#   args: ['install']
+
+# - name: node
+#   args: ['index.js']
+#   dir: "deployment-pipeline"
+# # - name: "gcr.io/cloud-builders/git"
+# #   args: ["remote", "set-url", "origin", "https://asilas-soap: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@github.com/$REPO_FULL_NAME.git"]
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+#   entrypoint: 'git'
+#   args: ['clone', 'https://asilas-soap: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@github.com/$REPO_FULL_NAME.git']
+
+# # - name: "gcr.io/cloud-builders/git"
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+#   entrypoint: 'git'
+#   args: ["checkout", "$BRANCH_NAME"]
+  
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+#   entrypoint: 'git'
+#   args: ["pull", "--unshallow", "--tags", "--ff-only"]
+
+# - name: node
+#   entrypoint: yarn
+#   args: ['install']
+
+# # - name: "gcr.io/cloud-builders/git"
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+#   entrypoint: 'git'
+#   args: ["config", "--global", "user.email", "asilas@soap.health"]
+
+# # - name: "gcr.io/cloud-builders/git"
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+#   entrypoint: 'git'
+#   args: ["config", "--global", "user.name", "Alberto Silas"] 
+
+# - name: node
+#   args: ['index.js']
+#   dir: "deployment-pipeline"
+
+# # - name: "gcr.io/cloud-builders/git"
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+#   entrypoint: 'git'
+#   args: ["add", "."]
+
+
+timeout: "5000s"
+options:
+  logging: CLOUD_LOGGING_ONLY

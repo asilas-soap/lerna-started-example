@@ -8,6 +8,7 @@ class GitCommands {
     constructor(baseDir, branch) {
         this.git = simpleGit.default({ baseDir });
         this.branchName = branch;
+        this.git.init();
 
         if (!baseDir || !branch)
             throw new Error("Git commands parameter required.");
