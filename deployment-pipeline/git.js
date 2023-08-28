@@ -14,7 +14,7 @@ module.exports = new (class Git {
     // await this.exec(`remote add -f -t main -m main origin git://${gitUrl}/${GITHUB_REPOSITORY}.git`);
     // await this.exec(`merge origin`);
 
-    await this.config("--global init.defaultBranch main");
+    // await this.config("--global init.defaultBranch main");
     // Set config
     await this.config('user.name', "Conventional commit log")
     await this.config('user.email', "asilas@soap.health")
