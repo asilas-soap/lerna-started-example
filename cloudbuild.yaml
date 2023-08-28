@@ -38,6 +38,7 @@ steps:
   - '-c'
   - |
     git config --global credential.helper cache
+    git config --global url."https://github.com/".insteadOf "git://github.com/"
     git pull origin main
     git checkout main
     ls /root/.ssh
