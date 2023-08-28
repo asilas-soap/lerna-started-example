@@ -11,8 +11,8 @@ module.exports = new (class Git {
   commandsRun = []
 
   init = async () => {
-    await this.exec(`remote add -f -t main -m main origin git://${gitUrl}/${GITHUB_REPOSITORY}.git`);
-    await this.exec(`merge origin`);
+    // await this.exec(`remote add -f -t main -m main origin git://${gitUrl}/${GITHUB_REPOSITORY}.git`);
+    // await this.exec(`merge origin`);
     // Set config
     await this.config('user.name', "Conventional commit log")
     await this.config('user.email', "asilas@soap.health")
@@ -88,7 +88,7 @@ module.exports = new (class Git {
    * @return {Promise<>}
    */
   pull = async () => {
-    const args = ['pull']
+    const args = ['pull', 'origin', 'main']
 
     // Check if the repo is unshallow
     if (await this.isShallow()) {
