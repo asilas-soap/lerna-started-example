@@ -40,7 +40,7 @@ steps:
     git config --global credential.helper cache
     git pull origin main
     git checkout main
-    ls
+    ls /root/.ssh
     git status
     echo "install"
     yarn install
