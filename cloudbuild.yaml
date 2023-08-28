@@ -34,7 +34,7 @@ steps:
     "--out-file=/root/.ssh/id_github"
   ]
   dir: "packages/libs/database/prisma"
-volumes:
+  volumes:
   - name: 'ssh'
     path: /root/.ssh
 
@@ -68,7 +68,7 @@ volumes:
     ls
     git status
     node ./deployment-pipeline/index.js
-volumes:
+  volumes:
   - name: 'ssh'
     path: /root/.ssh
 
