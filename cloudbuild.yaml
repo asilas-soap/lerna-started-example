@@ -1,27 +1,5 @@
 steps:
 
-# Edit Kustomize layer in config repo and push changes
-# - name: gcr.io/cloud-builders/git
-#   entrypoint: 'bash'
-#   args:
-#   - '-c'
-#   - |
-#     echo "Cloning repo ..."
-#     git checkout main
-#     git status
-#     ls
-#     node /deployment-pipeline/index.js
-#     git status
-
-# - name: node
-#   entrypoint: yarn
-#   args: ['install']
-
-# - name: node
-#   args: ['index.js']
-#   dir: "deployment-pipeline"
-
-
 # Access the id_github file from Secret Manager
 - name: "gcr.io/cloud-builders/gcloud"
   args: [
@@ -78,6 +56,14 @@ availableSecrets:
   - versionName: projects/$PROJECT_ID/secrets/SSH_KEY/versions/latest   
     env: 'SSH_KEY'
 
+
+# - name: node
+#   entrypoint: yarn
+#   args: ['install']
+
+# - name: node
+#   args: ['index.js']
+#   dir: "deployment-pipeline"
 # # - name: "gcr.io/cloud-builders/git"
 # #   args: ["remote", "set-url", "origin", "https://asilas-soap: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@github.com/$REPO_FULL_NAME.git"]
 # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
