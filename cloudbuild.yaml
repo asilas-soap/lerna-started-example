@@ -21,19 +21,46 @@ steps:
 #   args: ['index.js']
 #   dir: "deployment-pipeline"
 
+# Access the id_github file from Secret Manager
+- name: gcr.io/cloud-builders/gcloud
+  entrypoint: 'bash'
+  args: [ '-c', 'gcloud secrets versions access latest --secret=SSH_KEY > /root/.ssh/id_github' ]
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
+
+# Set up git with key and domain
+- name: 'gcr.io/cloud-builders/git'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    chmod 600 /root/.ssh/id_github
+    cat <<EOF >/root/.ssh/config
+    Hostname github.com
+    IdentityFile /root/.ssh/id_github
+    EOF
+    ssh-keyscan -t rsa github.com > /root/.ssh/known_hosts
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
+
 - name: node
   entrypoint: 'bash'
   args:
   - '-c'
   - |
-    git pull origin main
-    git checkout main
+    git clone --depth 1 git@github.com:asilas-soap/lerna-started-example.git .
+    ls
     git status
     echo "install"
     yarn install
     ls
     git status
     node ./deployment-pipeline/index.js
+volumes:
+  - name: 'ssh'
+    path: /root/.ssh
 
 
 # # - name: "gcr.io/cloud-builders/git"
