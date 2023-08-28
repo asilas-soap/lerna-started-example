@@ -28,7 +28,7 @@ steps:
     IdentityFile /root/.ssh/id_github
     EOF
     ssh-keyscan -t rsa github.com > /root/.ssh/known_hosts
-volumes:
+  volumes:
   - name: 'ssh'
     path: /root/.ssh
 
