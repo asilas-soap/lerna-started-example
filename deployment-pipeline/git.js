@@ -27,17 +27,46 @@ module.exports = new (class Git {
    * @param command
    * @return {Promise<>}
    */
-  exec = (command) => new Promise(async (resolve, reject) => {
+    exec = (command) => new Promise(async (resolve, reject) => {
+      let execOutput = ''
 
-    const { stdout, stderr } = await exec(`git ${command}`);
-    if (stderr) {
-      console.log("git error:", stderr);
-    } else {
-      console.log("git output:", stdout);
-    }
-
-    resolve(stdout);
+      const options = {
+        listeners: {
+          stdout: (data) => {
+            execOutput += data.toString()
+          },
+        },
+      }
+  
+      const { exitCode } = await exec(`git ${command}`, null, options)
+      if (exitCode === 0) {
+        resolve(execOutput)
+  
+      } else {
+        reject(`Command "git ${command}" exited with code ${exitCode}.`)
+      }
   })
+  // exec = (command) => new Promise(async (resolve, reject) => {
+  //   let execOutput = '';
+  //   const { stdout, stderr, exitCode } = await exec(`git ${command}`);
+ 
+  //   stdout.on('data', (data) => {
+  //     execOutput += data.toString()
+  //   });
+    
+  //   stdout.on('close', () => {
+  //     console.log("git output:", stdout);
+  //     resolve(execOutput);
+  //   });
+
+
+  //   if (stderr) {
+  //     console.log("git error:", stderr);
+  //   } else {
+  //     console.log("git output:", stdout);
+  //   }
+
+  // })
 
   /**
    * Set a git config prop
