@@ -20,9 +20,9 @@ module.exports = new (class Git {
     await this.config('user.email', "asilas@soap.health")
 
     // Update the origin
-    if (githubToken) {
-      await this.updateOrigin(`https://x-access-token:${githubToken}@${gitUrl}/${GITHUB_REPOSITORY}.git`)
-    }
+    // if (githubToken) {
+    //   await this.updateOrigin(`https://x-access-token:${githubToken}@${gitUrl}/${GITHUB_REPOSITORY}.git`)
+    // }
   }
 
   checkout = async(branch) => {
