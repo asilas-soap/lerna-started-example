@@ -15,7 +15,7 @@ async function runSteps(error, bumpRecommendation) {
 
   const bump = bumpVersion(filePackageJson, bumpRecommendation.releaseType);
 
-  // await git2.init();
+  await git2.init();
   await git2.checkout(branch);
   await git2.pull();
 
