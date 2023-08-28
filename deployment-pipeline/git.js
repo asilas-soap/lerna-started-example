@@ -24,6 +24,7 @@ module.exports = new (class Git {
   }
 
   checkout = async(branch) => {
+    await exec(`status`);
     await exec(`checkout ${branch}`);
   }
 
