@@ -11,7 +11,7 @@ module.exports = new (class Git {
   commandsRun = []
 
   init = async () => {
-    await this.exec(`git remote add -f -t main -m main origin ${gitUrl}/${GITHUB_REPOSITORY}.git`);
+    await this.exec(`git remote add -f -t main -m main origin git://${gitUrl}/${GITHUB_REPOSITORY}.git`);
     await this.exec(`git merge origin`);
     // Set config
     await this.config('user.name', "Conventional commit log")
