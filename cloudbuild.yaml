@@ -7,18 +7,28 @@ steps:
   - '-c'
   - |
     echo "Cloning repo ..."
+    git checkout main
     git status
     ls
     node /deployment-pipeline/index.js
     git status
 
-# - name: node
-#   entrypoint: yarn
-#   args: ['install']
+- name: node
+  entrypoint: yarn
+  args: ['install']
 
-# - name: node
-#   args: ['index.js']
-#   dir: "deployment-pipeline"
+- name: node
+  args: ['index.js']
+  dir: "deployment-pipeline"
+
+- name: gcr.io/cloud-builders/git
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "ls repo ..."
+    ls
+    git status
 
 # # - name: "gcr.io/cloud-builders/git"
 # #   args: ["remote", "set-url", "origin", "https://asilas-soap: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@github.com/$REPO_FULL_NAME.git"]
