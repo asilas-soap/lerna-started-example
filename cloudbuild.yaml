@@ -51,6 +51,7 @@ steps:
   - '-c'
   - |
     git clone --depth 1 git@github.com:asilas-soap/lerna-started-example.git .
+    git checkout main
     ls
     git status
     echo "install"
