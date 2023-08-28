@@ -36,18 +36,28 @@ steps:
   args:
   - '-c'
   - |
-    git config --global credential.helper cache
-    git pull origin main
-    git checkout main
-    ls
-    git status
-    echo "install"
-    yarn install
-    ls
     node ./deployment-pipeline/index.js
   volumes:
   - name: 'ssh'
     path: /root/.ssh
+    
+# - name: node
+#   entrypoint: 'bash'
+#   args:
+#   - '-c'
+#   - |
+#     git config --global credential.helper cache
+#     git pull origin main
+#     git checkout main
+#     ls
+#     git status
+#     echo "install"
+#     yarn install
+#     ls
+#     node ./deployment-pipeline/index.js
+#   volumes:
+#   - name: 'ssh'
+#     path: /root/.ssh
 
 
 # - name: node

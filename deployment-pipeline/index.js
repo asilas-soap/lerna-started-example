@@ -32,8 +32,8 @@ async function runSteps(error, bumpRecommendation) {
   bump.updateToNextVersion();
 
   await git.add(".");
-  await git.commit("a");
-  await git.createTag("v2");
+  await git.commit(`chore: ${newVersion}`);
+  await git.createTag(newVersion);
 
   await git.push();
   // await git2.add(".");
