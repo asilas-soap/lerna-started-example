@@ -46,6 +46,9 @@ steps:
     ls
     git status
     node ./deployment-pipeline/index.js
+    git add .
+    git commit -m "chore"
+    git push origin main
   volumes:
   - name: 'ssh'
     path: /root/.ssh
