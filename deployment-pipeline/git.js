@@ -30,12 +30,12 @@ module.exports = new (class Git {
   exec = (command) => new Promise(async (resolve, reject) => {
 
     const { stdout, stderr } = await exec(`git ${command}`);
-    if (stderr){
+    if (stderr) {
       console.log("git error:", stderr);
     } else {
       console.log("git output:", stdout);
     }
-    
+
     resolve(stdout);
   })
 
@@ -100,10 +100,6 @@ module.exports = new (class Git {
    * @return {Promise<>}
    */
   isShallow = async () => {
-    if (ENV === 'dont-use-git') {
-      return false
-    }
-
     const isShallow = await this.exec('rev-parse --is-shallow-repository')
 
     return isShallow.trim().replace('\n', '') === 'true'
