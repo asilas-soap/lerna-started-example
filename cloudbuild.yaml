@@ -37,7 +37,6 @@ steps:
   - '-c'
   - |
     git remote set-url origin git@github.com:asilas-soap/lerna-started-example.git
-    git checkout main
     git pull origin main
     git config user.name Conventional Commit
     git config user.email asilas@soap.health
