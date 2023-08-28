@@ -3,7 +3,7 @@ const fs = require('fs')
 const { Readable } = require('stream');
 
 function getChangelogStream(version, tagPrefix) {
-    return conventionalChangelog({ preset: 'angular' }, { version, currentTag: `${tagPrefix}${version}` }, { path: ".." });
+    return conventionalChangelog({ preset: 'angular' }, { version, currentTag: `${tagPrefix}${version}` }, { path: "." });
 }
 
 async function generateChangelogString(version, tagPrefix) {
