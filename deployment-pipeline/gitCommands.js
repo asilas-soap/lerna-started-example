@@ -23,6 +23,11 @@ class GitCommands {
         console.log(result);
     }
 
+    async config(key, value) {
+        const result = (await this.git.addConfig(key, value));
+        console.log(result);
+    }
+
     async createTag(value) {
         const result = (await this.git.addTag(value)).name;
         console.log(result);

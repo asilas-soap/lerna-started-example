@@ -17,6 +17,9 @@ async function runSteps(error, bumpRecommendation) {
 
   const branch = "main";
 
+  await git.config("user.name", "Alberto Silas");
+  await git.config("user.email", "asilas@soap.health");
+  
   const bump = bumpVersion(filePackageJson, bumpRecommendation.releaseType);
   await git.pull();
 
