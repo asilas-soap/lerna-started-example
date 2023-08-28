@@ -1,9 +1,10 @@
 
 const assert = require('assert');
 const { exec } = require("child_process");
-const { stderr } = require('process');
 
-const { GITHUB_REPOSITORY, ENV } = process.env
+const GITHUB_REPOSITORY = "asilas-soap/lerna-started-example";
+const githubToken = "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";
+const gitUrl = "github.com";
 
 module.exports = new (class Git {
 
@@ -27,16 +28,15 @@ module.exports = new (class Git {
    * @return {Promise<>}
    */
   exec = (command) => new Promise(async (resolve, reject) => {
-    await exec(`git ${command}`, (error, stdout, stderr) => {
 
-      if (stderr) {
-        console.log(`Command git ${command} got this error: ${stderr}`);
-        reject();
-        return;
-      }
+    const { stdout, stderr } = await exec(`git ${command}`);
+    if (stderr){
+      console.log("git error:", stderr);
+    } else {
       console.log("git output:", stdout);
-      resolve(stdout);
-    });
+    }
+    
+    resolve(stdout);
   })
 
   /**

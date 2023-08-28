@@ -1,58 +1,66 @@
 steps:
 
-# - name: "gcr.io/cloud-builders/git"
-#   args: ["remote", "set-url", "origin", "https://asilas-soap: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@github.com/$REPO_FULL_NAME.git"]
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-  entrypoint: 'git'
-  args: ['clone', 'https://asilas-soap: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@github.com/$REPO_FULL_NAME.git']
-
-# - name: "gcr.io/cloud-builders/git"
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-  entrypoint: 'git'
-  args: ["checkout", "$BRANCH_NAME"]
-  
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-  entrypoint: 'git'
-  args: ["pull", "--unshallow", "--tags", "--ff-only"]
-
 - name: node
   entrypoint: yarn
   args: ['install']
-
-# - name: "gcr.io/cloud-builders/git"
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-  entrypoint: 'git'
-  args: ["config", "--global", "user.email", "asilas@soap.health"]
-
-# - name: "gcr.io/cloud-builders/git"
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-  entrypoint: 'git'
-  args: ["config", "--global", "user.name", "Alberto Silas"] 
 
 - name: node
   args: ['index.js']
   dir: "deployment-pipeline"
 
-# - name: "gcr.io/cloud-builders/git"
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-  entrypoint: 'git'
-  args: ["add", "."]
+# # - name: "gcr.io/cloud-builders/git"
+# #   args: ["remote", "set-url", "origin", "https://asilas-soap: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@github.com/$REPO_FULL_NAME.git"]
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+#   entrypoint: 'git'
+#   args: ['clone', 'https://asilas-soap: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@github.com/$REPO_FULL_NAME.git']
 
-# - name: "gcr.io/cloud-builders/git"
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-  entrypoint: 'git'
-  args: ["commit", "-m", "message c"]
+# # - name: "gcr.io/cloud-builders/git"
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+#   entrypoint: 'git'
+#   args: ["checkout", "$BRANCH_NAME"]
+  
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+#   entrypoint: 'git'
+#   args: ["pull", "--unshallow", "--tags", "--ff-only"]
 
-# - name: "gcr.io/cloud-builders/git"
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-  entrypoint: 'git'
-  args: ["tag", "-a", "v0.51.0", "-m", "v0.51.0"]
+# - name: node
+#   entrypoint: yarn
+#   args: ['install']
 
-# - name: "gcr.io/cloud-builders/git"
+# # - name: "gcr.io/cloud-builders/git"
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+#   entrypoint: 'git'
+#   args: ["config", "--global", "user.email", "asilas@soap.health"]
+
+# # - name: "gcr.io/cloud-builders/git"
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+#   entrypoint: 'git'
+#   args: ["config", "--global", "user.name", "Alberto Silas"] 
+
+# - name: node
+#   args: ['index.js']
+#   dir: "deployment-pipeline"
+
+# # - name: "gcr.io/cloud-builders/git"
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+#   entrypoint: 'git'
+#   args: ["add", "."]
+
+# # - name: "gcr.io/cloud-builders/git"
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+#   entrypoint: 'git'
+#   args: ["commit", "-m", "message c"]
+
+# # - name: "gcr.io/cloud-builders/git"
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+#   entrypoint: 'git'
+#   args: ["tag", "-a", "v0.51.0", "-m", "v0.51.0"]
+
+# # - name: "gcr.io/cloud-builders/git"
+# #   args: ["push", "origin", "main", "--follow-tags"]
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+#   entrypoint: 'git'
 #   args: ["push", "origin", "main", "--follow-tags"]
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-  entrypoint: 'git'
-  args: ["push", "origin", "main", "--follow-tags"]
 
 timeout: "5000s"
 options:
