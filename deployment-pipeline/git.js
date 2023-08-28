@@ -27,46 +27,30 @@ module.exports = new (class Git {
    * @param command
    * @return {Promise<>}
    */
-    exec = (command) => new Promise(async (resolve, reject) => {
-      let execOutput = ''
-
-      const options = {
-        listeners: {
-          stdout: (data) => {
-            execOutput += data.toString()
-          },
-        },
-      }
-  
-      const { exitCode } = await exec(`git ${command}`, null, options)
-      if (exitCode === 0) {
-        resolve(execOutput)
-  
-      } else {
-        reject(`Command "git ${command}" exited with code ${exitCode}.`)
-      }
-  })
-  // exec = (command) => new Promise(async (resolve, reject) => {
-  //   let execOutput = '';
-  //   const { stdout, stderr, exitCode } = await exec(`git ${command}`);
+  exec = (command) => new Promise(async (resolve, reject) => {
+    let execOutput = '';
+    const cmd = await exec(`git ${command}`);
  
-  //   stdout.on('data', (data) => {
-  //     execOutput += data.toString()
-  //   });
-    
-  //   stdout.on('close', () => {
-  //     console.log("git output:", stdout);
-  //     resolve(execOutput);
-  //   });
+    cmd.stdout.on('data', (data) => {
+      execOutput += data.toString()
+    });
 
+    cmd.stderr.on('data', (data) => {
+      execOutput += data.toString()
+    });
 
-  //   if (stderr) {
-  //     console.log("git error:", stderr);
-  //   } else {
-  //     console.log("git output:", stdout);
-  //   }
+    cmd.on('close', (code) => {
+      if (code == 0){
+        console.log("git output:", execOutput);
+        resolve(execOutput);
+      } 
+      else {
+        console.log("git error:", execOutput);
+        reject(`Command "git ${command}" exited with code ${code}.`);
+      }
+    });
 
-  // })
+  })
 
   /**
    * Set a git config prop
