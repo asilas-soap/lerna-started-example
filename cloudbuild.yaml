@@ -37,15 +37,22 @@ steps:
   args:
   - '-c'
   - |
+    git config --global url."https://github.com/".insteadOf "git://github.com/"
+    echo "git config-------------"
+    git config --global advice.detachedHead false
     git config --global user.email "asilas@soap.health"
     git config --global user.name "Alberto Silas"
     git config --global credential.helper cache
-    git config --global url."https://github.com/".insteadOf "git://github.com/"
+    
+    echo "git pull origin main--------------"
     git pull origin main
+    
+    echo "git checkout main--------------"
     git checkout main
     ls /root/.ssh
+    echo "git status----------"
     git status
-    echo "install"
+    echo "install------------------"
     yarn install
     ls
     node ./deployment-pipeline/index.js
