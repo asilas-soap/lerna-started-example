@@ -37,9 +37,12 @@ steps:
   args:
   - '-c'
   - |
+    git config --global init.defaultBranch main
+    git init
+
     echo "git remote"
     git remote set-url origin git@github.com:asilas-soap/lerna-started-example.git
-    git config --global init.defaultBranch main
+   
 
     # git config --global url."https://github.com/".insteadOf "git://github.com/"
 
