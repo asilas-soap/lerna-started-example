@@ -38,21 +38,22 @@ steps:
   - '-c'
   - |
     git config --global init.defaultBranch main
-    git init
 
-    echo "git remote"
+    echo "git config-------------"
+    git config --global advice.detachedHead false
+    git config --global user.email "asilas@soap.health"
+    git config --global user.name "Alberto Silas"
+    
+    echo "git remote set-url"
     git remote set-url origin git@github.com:asilas-soap/lerna-started-example.git
-   
 
     # git config --global url."https://github.com/".insteadOf "git://github.com/"
 
     echo "git checkout main--------------"
     git checkout main
 
-    echo "git config-------------"
-    git config --global advice.detachedHead false
-    git config --global user.email "asilas@soap.health"
-    git config --global user.name "Alberto Silas"
+    echo "git remote -v"
+    git remote -v
 
     echo "git pull origin main--------------"
     git pull origin main
