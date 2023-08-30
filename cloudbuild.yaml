@@ -23,8 +23,8 @@ steps:
   - |
     chmod 600 /root/.ssh/id_github
     cat <<EOF >/root/.ssh/config
-    Hostname github.com
-    Username asilas@soap.health
+    HostName github.com
+    User asilas@soap.health
     IdentityFile /root/.ssh/id_github
     EOF
     
