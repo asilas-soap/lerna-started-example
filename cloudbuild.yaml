@@ -48,7 +48,7 @@ steps:
     git remote remove origin
 
     echo "git remote add"
-    git remote add -f -t main -m main origin git@github.com:asilas-soap/lerna-started-example.git
+    git remote add origin git@github.com:asilas-soap/lerna-started-example.git
 
     echo "git pull --ff-only"
     git pull --ff-only
