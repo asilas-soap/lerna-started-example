@@ -37,6 +37,11 @@ steps:
   args:
   - '-c'
   - |
+
+    echo "config user-------------------------------------------------------------------"
+    git config --global user.name Alberto Silas
+    git config --global user.email asilas@soap.health
+
     echo "Cloning repo ..."
     git clone --depth 1 git@github.com:asilas-soap/lerna-started-example.git
     
@@ -52,8 +57,7 @@ steps:
     node ./deployment-pipeline/index.js
 
     echo "Pushing changes to git config repo ..."
-    git config --global user.name Alberto Silas
-    git config --global user.email asilas@soap.health"
+
     echo "git add -A  ----------------------------------------------------------------------------"
     git add -A
 
