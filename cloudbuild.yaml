@@ -16,7 +16,7 @@ steps:
     path: /root/.ssh
 
 # Set up git with key and domain
-- name: 'gcr.io/cloud-builders/git'
+- name: node
   entrypoint: 'bash'
   args:
   - '-c'
@@ -37,57 +37,93 @@ steps:
   args:
   - '-c'
   - |
-    git config --global init.defaultBranch main
-
-    echo "git config-------------"
-    git config --global advice.detachedHead false
-    git config --global user.email "asilas@soap.health"
-    git config --global user.name "Alberto Silas"
+    echo "Cloning repo ..."
+    git clone --depth 1 git@github.com:asilas-soap/lerna-started-example.git
     
-    echo "git remote remove origin"
-    git remote remove origin
-
-    echo "git remote add"
-    git remote add origin git@github.com:asilas-soap/lerna-started-example.git
-
-    echo "git pull --ff-only"
-    git pull --ff-only
-
-    echo "git branch --set-upstream-to=origin/main"
-    git branch --set-upstream-to=origin/main
-
-    echo "git status"
-    git status
-
-    # git config --global url."https://github.com/".insteadOf "git://github.com/"
-    
-    # echo "git pull origin main--------------"
-    # git pull origin main
-
-    echo "git checkout main--------------"
+    echo "git checkout main"
     git checkout main
 
-    echo "git remote -v"
-    git remote -v
-    
-    ls /root/.ssh
-    echo "git status----------"
-    git status
-    echo "install------------------"
-    yarn install
+    echo "Updating image tag version ..."
+    cd lerna-started-example
     ls
+    yarn install
+
+    echo "node command"
     node ./deployment-pipeline/index.js
-    echo "git add ."
-    git add .
-    echo "git status"
+
+    echo "Pushing changes to git config repo ..."
+    git config --global user.name Alberto Silas
+    git config --global user.email asilas@soap.health"
+    echo "git add -A  ----------------------------------------------------------------------------"
+    git add -A
+
+    echo "git status ----------------------------------------------------------------------------"
     git status
-    "git commit"
-    git commit -m "commit from cb"
-    echo "git push origin main"
-    git push origin main
+
+    echo "git commit ----------------------------------------------------------------------------"
+    git commit -m "commit from a"
+
+    echo "git push ----------------------------------------------------------------------------"
+    git push origin master
   volumes:
   - name: 'ssh'
     path: /root/.ssh
+# - name: node
+#   entrypoint: 'bash'
+#   args:
+#   - '-c'
+#   - |
+#     git config --global init.defaultBranch main
+
+#     echo "git config-------------"
+#     git config --global advice.detachedHead false
+#     git config --global user.email "asilas@soap.health"
+#     git config --global user.name "Alberto Silas"
+    
+#     echo "git remote remove origin"
+#     git remote remove origin
+
+#     echo "git remote add"
+#     git remote add origin git@github.com:asilas-soap/lerna-started-example.git
+
+#     echo "git pull --ff-only"
+#     git pull --ff-only
+
+#     echo "git branch --set-upstream-to=origin/main"
+#     git branch --set-upstream-to=origin/main
+
+#     echo "git status"
+#     git status
+
+#     # git config --global url."https://github.com/".insteadOf "git://github.com/"
+    
+#     # echo "git pull origin main--------------"
+#     # git pull origin main
+
+#     echo "git checkout main--------------"
+#     git checkout main
+
+#     echo "git remote -v"
+#     git remote -v
+    
+#     ls /root/.ssh
+#     echo "git status----------"
+#     git status
+#     echo "install------------------"
+#     yarn install
+#     ls
+#     node ./deployment-pipeline/index.js
+#     echo "git add ."
+#     git add .
+#     echo "git status"
+#     git status
+#     "git commit"
+#     git commit -m "commit from cb"
+#     echo "git push origin main"
+#     git push origin main
+#   volumes:
+#   - name: 'ssh'
+#     path: /root/.ssh
 
 
 # - name: node
