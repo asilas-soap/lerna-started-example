@@ -37,12 +37,14 @@ steps:
   args:
   - '-c'
   - |
-    git config --global url."https://github.com/".insteadOf "git://github.com/"
+    echo "git remote"
+    git remote set-url origin git@github.com:asilas-soap/lerna-started-example.git
+    # git config --global url."https://github.com/".insteadOf "git://github.com/"
+
     echo "git config-------------"
     git config --global advice.detachedHead false
     git config --global user.email "asilas@soap.health"
     git config --global user.name "Alberto Silas"
-    git config --global credential.helper cache
     
     echo "git pull origin main--------------"
     git pull origin main
@@ -56,9 +58,13 @@ steps:
     yarn install
     ls
     node ./deployment-pipeline/index.js
+    echo "git add ."
     git add .
+    echo "git status"
     git status
+    "git commit"
     git commit -m "commit from cb"
+    echo "git push origin main"
     git push origin main
   volumes:
   - name: 'ssh'
