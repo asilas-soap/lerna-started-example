@@ -37,6 +37,8 @@ steps:
   args:
   - '-c'
   - |
+    git config --global user.email "asilas@soap.health"
+    git config --global user.name "Alberto Silas"
     git config --global credential.helper cache
     git config --global url."https://github.com/".insteadOf "git://github.com/"
     git pull origin main
