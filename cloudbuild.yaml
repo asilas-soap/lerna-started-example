@@ -47,6 +47,10 @@ steps:
     yarn install
     ls
     node ./deployment-pipeline/index.js
+    git add .
+    git status
+    git commit -m "commit from cb"
+    git push origin main
   volumes:
   - name: 'ssh'
     path: /root/.ssh
