@@ -27,6 +27,8 @@ steps:
     Username asilas@soap.health
     IdentityFile /root/.ssh/id_github
     EOF
+    
+    echo "cat /root/.ssh/config----------------------"
     cat /root/.ssh/config
     ssh-keyscan -t rsa github.com > /root/.ssh/known_hosts
   volumes:
