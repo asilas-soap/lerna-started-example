@@ -2,10 +2,16 @@ steps:
 
 # Access the id_github file from Secret Manager, and setup SSH
 steps:
-- name: "gcr.io/cloud-builders/yarn"
+# install packages
+- name: "node:16.14.2"
+  id: "Install packages"
+  entrypoint: "yarn"
   args: ["install"]
 
-- name: "gcr.io/cloud-builders/yarn"
+# build project
+- name: "node:16.14.2"
+  id: "Build project"
+  entrypoint: "yarn"
   args: ["lerna", "run", "build"]
 
 - name: 'gcr.io/cloud-builders/git'
