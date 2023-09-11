@@ -4,8 +4,7 @@ steps:
 steps:
 - name: 'gcr.io/cloud-builders/git'
   args:
-  - log 
-  - -1 
+  - log -1
   - --format=%s
 
 # install packages
