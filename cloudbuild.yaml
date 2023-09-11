@@ -2,11 +2,35 @@ steps:
 
 # Access the id_github file from Secret Manager, and setup SSH
 steps:
+# - name: 'gcr.io/cloud-builders/git'
+#   args:
+#   - log
+#   - '-1'
+#   - --format=%s > log.txt
+#   volumes:
+#   - name: 'ssh'
+#     path: /root/.ssh
+
 - name: 'gcr.io/cloud-builders/git'
+  entrypoint: 'bash'
   args:
-  - log
-  - '-1'
-  - --format=%s
+  - -c
+  - |
+    git log -1 --format=%s > /root/.ssh/log.txt
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
+
+- name: 'gcr.io/cloud-builders/git'
+  entrypoint: 'bash'
+  args:
+  - -c
+  - |
+    chmod 777 test.sh
+    test.sh /root/.ssh/log.txt
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
 
 # install packages
 - name: "node:16.14.2"
