@@ -28,15 +28,6 @@ steps:
 # Clone the repository
 - name: 'gcr.io/cloud-builders/git'
   args:
-  - checkout
-  - main
-  volumes:
-  - name: 'ssh'
-    path: /root/.ssh
-
-# Clone the repository
-- name: 'gcr.io/cloud-builders/git'
-  args:
   - log
   volumes:
   - name: 'ssh'
