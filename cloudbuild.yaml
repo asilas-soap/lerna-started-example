@@ -32,7 +32,7 @@ steps:
     path: /root/.ssh
 
 - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
-  args: ["./test.sh", "$(</root/.ssh/log.txt)"]
+  args: ['./test.sh', '"$(</root/.ssh/log.txt)"']
   volumes:
   - name: 'ssh'
     path: /root/.ssh
