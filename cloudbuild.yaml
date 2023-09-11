@@ -25,6 +25,23 @@ steps:
   - name: 'ssh'
     path: /root/.ssh
 
+# Clone the repository
+- name: 'gcr.io/cloud-builders/git'
+  args:
+  - checkout
+  - main
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
+
+# Clone the repository
+- name: 'gcr.io/cloud-builders/git'
+  args:
+  - log
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
+
 availableSecrets:
   secretManager:
   - versionName: projects/soaphealth-development/secrets/SSH_KEY/versions/latest
