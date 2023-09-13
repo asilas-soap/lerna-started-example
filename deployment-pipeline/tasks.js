@@ -38,4 +38,4 @@ function updateTasks(path, currentStatus, newStatus) {
 
 const currentStatus = validateStatus(process.argv[2]);
 const newStatus = validateStatus(process.argv[3]);
-updateTasks("./log.txt", currentStatus, newStatus);
+updateTasks("/root/.ssh/log.txt", currentStatus, newStatus);
