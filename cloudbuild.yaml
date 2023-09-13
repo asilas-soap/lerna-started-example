@@ -2,15 +2,6 @@ steps:
 
 # Access the id_github file from Secret Manager, and setup SSH
 steps:
-# - name: 'gcr.io/cloud-builders/git'
-#   args:
-#   - log
-#   - '-1'
-#   - --format=%s > log.txt
-#   volumes:
-#   - name: 'ssh'
-#     path: /root/.ssh
-
 - name: 'gcr.io/cloud-builders/git'
   entrypoint: 'bash'
   args:
@@ -73,9 +64,8 @@ steps:
     path: /root/.ssh
 
 # Clone the repository
-- name: 'gcr.io/cloud-builders/git'
-  args:
-  - log
+- name: 'node'
+  args: ["./deployment-pipeline/tasks.js", "Queued To Dev", "Dev Ready"]
   volumes:
   - name: 'ssh'
     path: /root/.ssh
