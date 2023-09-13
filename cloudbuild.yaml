@@ -65,7 +65,7 @@ steps:
 
 # Clone the repository
 - name: 'node'
-  args: ["./deployment-pipeline/tasks.js"]
+  args: ["./deployment-pipeline/tasks.js", "Queued To Dev", "Dev Ready"]
   volumes:
   - name: 'ssh'
     path: /root/.ssh
