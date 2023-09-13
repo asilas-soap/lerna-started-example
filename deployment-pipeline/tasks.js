@@ -2,9 +2,24 @@ import { readFileSync, existsSync } from "fs";
 import { checkAndUpdate } from "./utils/clickUp.js";
 
 function getTasksId(text) {
-  return text.replace("\n", " ").split(" ")
+  // const fromMsg = text.replace("\n", " ").split(" ")
+  //   .filter(item => item.startsWith("#"))
+  //   .map(item => item.replace("#", ""));
+
+  // console.log(`fromMsg ${fromMsg}`);
+
+  const fromBranchName = text.replace("\n", " ")
+    .split(" ")
+    .filter(item => item.startsWith("asilas-soap/"))
+    .flatMap(item => item.split("_"))
     .filter(item => item.startsWith("#"))
     .map(item => item.replace("#", ""));
+
+
+  // console.log(`fromBranchName ${fromBranchName}`);
+  // return fromBranchName.concat(fromMsg).filter((item, i, ar) => ar.indexOf(item) === i);
+
+  return fromBranchName;
 }
 
 function validateStatus(status) {
@@ -57,4 +72,5 @@ function updateTasks(path, currentStatus, newStatus) {
 const currentStatus = validateStatus(process.argv[2]);
 const newStatus = validateStatus(process.argv[3]);
 
-updateTasks("/root/.ssh/log.txt", currentStatus, newStatus);
+// updateTasks("/root/.ssh/log.txt", currentStatus, newStatus);
+updateTasks("./log.txt", currentStatus, newStatus);
