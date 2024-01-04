@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.102.0 (2024-01-04)
+
+
+### Features
+
+* release ([06f1c3e](https://github.com/asilas-soap/lerna-started-example/commit/06f1c3e86d39126701bcee1df760590a68d401b1))
+
+
+
+
+
 ## 0.101.1 (2024-01-04)
 
 
