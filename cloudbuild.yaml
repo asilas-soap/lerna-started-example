@@ -42,7 +42,7 @@ steps:
 - name: "node:20.10.0"
   id: "version"
   entrypoint: "yarn"
-  args: ["lerna", "version", "--conventional-commits"]
+  args: ["lerna", "version", "--yes", "--conventional-commits"]
   dir: "lerna-started-example"
   volumes:
   - name: 'ssh'
