@@ -20,7 +20,7 @@ steps:
 - name: 'gcr.io/cloud-builders/git'
   args:
   - clone
-  - --recurse-submodules
+  - -b main
   - git@github.com:asilas-soap/lerna-started-example
   volumes:
   - name: 'ssh'
