@@ -40,6 +40,9 @@ steps:
   id: "version"
   entrypoint: "yarn"
   args: ["lerna", "version", "--conventional-commits"]
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
 
 availableSecrets:
   secretManager:
