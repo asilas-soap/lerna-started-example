@@ -23,6 +23,10 @@ steps:
   - -c
   - |
     git clone git@github.com:asilas-soap/lerna-started-example.git --depth 1
+    ls
+    cd lerna-started-example
+    git config --global user.email "asilas@soap.health"
+    git config --global user.name "Alberto Silas"
   volumes:
   - name: 'ssh'
     path: /root/.ssh
