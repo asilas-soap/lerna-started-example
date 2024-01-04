@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.4.10",
   "devDependencies": {
+    "conventional-github-releaser": "^3.1.5",
     "lerna": "^8.0.1"
   },
   "type": "module",

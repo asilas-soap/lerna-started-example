@@ -52,6 +52,17 @@ steps:
   - name: 'ssh'
     path: /root/.ssh
 
+- name: "node:20.10.0"
+  id: "version"
+  entrypoint: "yarn"
+  args: ["run", "conventional-github-releaser", "-p", "angular"]
+  env:
+  - 'CONVENTIONAL_GITHUB_RELEASER_TOKEN=${_GH_TOKEN}'
+  dir: "lerna-started-example"
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
+
 availableSecrets:
   secretManager:
   - versionName: projects/soaphealth-development/secrets/SSH_KEY/versions/latest
