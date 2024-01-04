@@ -6,7 +6,7 @@ export default function Index() {
         <>
             <Header/>
             <div>
-                Content!
+                Remix app Content!
             </div>
             <Footer/>
         </>
