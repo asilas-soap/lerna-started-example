@@ -37,7 +37,7 @@ steps:
   args: ["lerna", "run", "build"]
 
 - name: "node:20.10.0"
-  id: "build"
+  id: "version"
   entrypoint: "yarn"
   args: ["lerna", "run", "version", "--conventional-commits"]
 
