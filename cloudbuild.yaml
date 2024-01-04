@@ -20,8 +20,8 @@ steps:
 - name: 'gcr.io/cloud-builders/git'
   args:
   - clone
-  - -b main
-  - git@github.com:asilas-soap/lerna-started-example
+  - --depth 1
+  - git@github.com:asilas-soap/lerna-started-example.git
   volumes:
   - name: 'ssh'
     path: /root/.ssh
@@ -30,16 +30,19 @@ steps:
   id: "install"
   entrypoint: "yarn"
   args: ["install"]
+  dir: "lerna-started-example"
 
 - name: "node:20.10.0"
   id: "build"
   entrypoint: "yarn"
   args: ["lerna", "run", "build"]
+  dir: "lerna-started-example"
 
 - name: "node:20.10.0"
   id: "version"
   entrypoint: "yarn"
   args: ["lerna", "version", "--conventional-commits"]
+  dir: "lerna-started-example"
   volumes:
   - name: 'ssh'
     path: /root/.ssh
