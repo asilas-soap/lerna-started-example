@@ -3,26 +3,15 @@ steps:
 # Access the id_github file from Secret Manager, and setup SSH
 steps:
 
-# Access the id_github file from Secret Manager
-- name: gcr.io/cloud-builders/gcloud
-  entrypoint: 'bash'
-  args: [ '-c', 'gcloud secrets versions access latest --secret=SSH_KEY > /root/.ssh/id_github' ]
-  volumes:
-  - name: 'ssh'
-    path: /root/.ssh
-    
-# Set up git with key and domain
 - name: 'gcr.io/cloud-builders/git'
+  secretEnv: ['SSH_KEY']
   entrypoint: 'bash'
   args:
-  - '-c'
+  - -c
   - |
-    chmod 600 /root/.ssh/id_github
-    cat <<EOF >/root/.ssh/config
-    Hostname github.com
-    IdentityFile /root/.ssh/id_github
-    EOF
-    ssh-keyscan -t rsa github.com > /root/.ssh/known_hosts
+    echo "$$SSH_KEY" >> /root/.ssh/id_rsa
+    chmod 400 /root/.ssh/id_rsa
+    cp known_hosts.github /root/.ssh/known_hosts
   volumes:
   - name: 'ssh'
     path: /root/.ssh
