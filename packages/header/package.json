@@ -1,6 +1,6 @@
 {
   "name": "header",
-  "version": "0.103.0",
+  "version": "0.103.1",
   "private": "true",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
