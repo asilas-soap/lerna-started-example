@@ -24,6 +24,7 @@ export default function App() {
       <body>
         <Outlet />
         <ScrollRestoration />
+        Test using node release-type
         <Scripts />
         <LiveReload />
       </body>
