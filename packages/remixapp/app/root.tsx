@@ -26,6 +26,7 @@ export default function App() {
         <ScrollRestoration />
         Test using node release-type
         Only features
+        Chore commit
         <Scripts />
         <LiveReload />
       </body>
