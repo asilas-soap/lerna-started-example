@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.104.0](https://github.com/asilas-soap/lerna-started-example/compare/v0.103.1...v0.104.0) (2024-03-13)
+
+
+### Features
+
+* add only features label ([8fa5f9e](https://github.com/asilas-soap/lerna-started-example/commit/8fa5f9e3398ff17d9778955c56b05e9fe9aa2168))
+* add test ([c18ca06](https://github.com/asilas-soap/lerna-started-example/commit/c18ca06c9c5e551cd90961e690af588bdc3b1d3d))
+* change release type ([38f52e0](https://github.com/asilas-soap/lerna-started-example/commit/38f52e0b56235712a4310ed1d285b492b7ecc359))
+* release manager ([ab4929d](https://github.com/asilas-soap/lerna-started-example/commit/ab4929d7abc2e76d8badce719f60c11d573cb250))
+
+
+### Bug Fixes
+
+* add name ([2dd4751](https://github.com/asilas-soap/lerna-started-example/commit/2dd4751e04996bbd58cd638d3fb0afa03d39757b))
+
 ## 0.103.1 (2024-01-09)
 
 **Note:** Version bump only for package root
