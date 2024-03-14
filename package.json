@@ -4,7 +4,8 @@
   "version": "0.106.0",
   "devDependencies": {
     "conventional-github-releaser": "^3.1.5",
-    "lerna": "^8.0.1"
+    "lerna": "^8.0.1",
+    "release-it": "^17.1.1"
   },
   "type": "module",
   "workspaces": [
