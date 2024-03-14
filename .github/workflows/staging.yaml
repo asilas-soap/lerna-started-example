@@ -25,13 +25,13 @@ jobs:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT_PROTECTED_BRANCH_ACCESS }}
+          token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
       
       - name: 📝 Bump & Changelog
         id: bump
         uses: TriPSs/conventional-changelog-action@v3
         with:
-          github-token: ${{ secrets.PAT_PROTECTED_BRANCH_ACCESS }}
+          github-token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
           git-user-name: 'Alberto Silas'
           git-user-email: 'asilas@soap.health'
           output-file: "CHANGELOG.md"
