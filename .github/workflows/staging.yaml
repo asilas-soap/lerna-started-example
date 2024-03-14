@@ -41,6 +41,7 @@ jobs:
         shell: bash
         run: |
           VERSION=$(node ./deployment-pipeline/version.mjs --suffix="$GITHUB_SHA")
-          echo "$VERSION"
+          echo "version value - $VERSION"
+          echo "env name - $GITHUB_REF_NAME"
           echo "tag=$VERSION" >> "$GITHUB_OUTPUT"
 
