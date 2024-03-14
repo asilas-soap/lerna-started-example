@@ -1,3 +1,12 @@
+## [0.107.2](https://github.com/asilas-soap/lerna-started-example/compare/v0.107.1...v0.107.2) (2024-03-14)
+
+
+### Bug Fixes
+
+* add ([53bfded](https://github.com/asilas-soap/lerna-started-example/commit/53bfded259cc156d63675c81c2f56b3bba8faddf))
+
+
+
 ## [0.107.1](https://github.com/asilas-soap/lerna-started-example/compare/v0.107.0...v0.107.1) (2024-03-14)
 
 
@@ -31,10 +40,6 @@
 
 
 ## [0.106.2](https://github.com/asilas-soap/lerna-started-example/compare/v0.106.1...v0.106.2) (2024-03-14)
-
-
-
-## [0.106.1](https://github.com/asilas-soap/lerna-started-example/compare/v0.106.0...v0.106.1) (2024-03-14)
 
 
 
