@@ -1,0 +1,46 @@
+name: Deploy - Staging
+
+on: 
+  # Trigger manually 
+  workflow_dispatch:
+    branches: 
+     - development
+
+# Add "id-token" with the intended permissions.
+permissions:
+  contents: 'read'
+  id-token: 'write'
+  
+env:
+  BRANCH_NAME: $GITHUB_REF_NAME
+  
+jobs:
+  version:
+    name: Set version
+    runs-on: ubuntu-latest
+    environment: Staging
+    outputs:
+      tag: ${{ steps.format.outputs.tag }}
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_PROTECTED_BRANCH_ACCESS }}
+      
+      - name: 📝 Bump & Changelog
+        id: bump
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          github-token: ${{ secrets.PAT_PROTECTED_BRANCH_ACCESS }}
+          git-user-name: 'Alberto Silas'
+          git-user-email: 'asilas@soap.health'
+          output-file: "CHANGELOG.md"
+    
+      - name: 🔖 Format tag value
+        id: format
+        shell: bash
+        run: |
+          VERSION=$(node ./deployment-pipeline/version.mjs --suffix="$GITHUB_SHA")
+          echo "$VERSION"
+          echo "tag=$VERSION" >> "$GITHUB_OUTPUT"
+
