@@ -1,7 +1,7 @@
 {
   "name": "root",
   "private": true,
-  "version": "0.107.2",
+  "version": "0.107.3",
   "devDependencies": {
     "conventional-github-releaser": "^3.1.5",
     "lerna": "^8.0.1",
