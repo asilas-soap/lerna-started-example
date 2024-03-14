@@ -43,5 +43,6 @@ jobs:
           VERSION=$(node ./deployment-pipeline/version.mjs --suffix="$GITHUB_SHA")
           echo "version value - $VERSION"
           echo "branch name - $BRANCH_NAME"
+          echo "ref name - $GITHUB_REF_NAME"
           echo "tag=$VERSION" >> "$GITHUB_OUTPUT"
 
