@@ -55,5 +55,5 @@ jobs:
     env:
       VERSION_NUMBER: ${{ needs.version.outputs.tag }}
     with:
-      branch: 'releases/v$VERSION_NUMBER'
+      branch: 'releases/$VERSION_NUMBER'
       sha: '$GITHUB_SHA'
