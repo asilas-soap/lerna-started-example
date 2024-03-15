@@ -21,6 +21,7 @@ jobs:
     environment: Staging
     outputs:
       tag: ${{ steps.format.outputs.tag }}
+      name: ${{ steps.bump.outputs.tag }}
     steps:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
@@ -41,10 +42,10 @@ jobs:
         id: format
         shell: bash
         run: |
-          VERSION=$(node ./deployment-pipeline/version.mjs --suffix="$GITHUB_SHA")
-          echo "version value - $VERSION"
+          NAME=$(node ./deployment-pipeline/version.mjs --suffix="$GITHUB_SHA")
+          echo "version value - $NAME"
           echo "ref name - $GITHUB_REF_NAME"
-          echo "tag=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=$NAME" >> "$GITHUB_OUTPUT"
 
   branch:
     name: Create new branch
@@ -57,10 +58,19 @@ jobs:
       with:
         token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
+    - name: Logs
+      shell: bash
+      env:
+        VERSION_NAME: ${{ needs.version.outputs.name }}
+      run: |
+        echo "commit sha $GITHUB_SHA"
+        echo "version $VERSION_NAME"
+
+
     - name: Create branch
       uses: peterjgrainger/action-create-branch@v2.2.0
       env:
         GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
       with:
-        branch: 'releases/${{ needs.version.outputs.tag }}'
+        branch: 'releases/${{ needs.version.outputs.name }}'
         sha: '$GITHUB_SHA'
