@@ -70,3 +70,6 @@ jobs:
        
     - name: Create release branch
       run: git checkout -b release/${{ needs.version.outputs.tag }}
+
+    - name: Push new branch
+      run: git push origin release/${{ needs.version.outputs.tag }}
