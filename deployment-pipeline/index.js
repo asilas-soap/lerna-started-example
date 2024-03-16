@@ -11,6 +11,8 @@ const git = git3(".", "main");
 async function runSteps(error, bumpRecommendation) {
   if (error) throw error;
 
+  console.log("runSteps")
+
 
   const fileChangelog = path.join(process.cwd(), "CHANGELOG.md");
   const filePackageJson = path.join(process.cwd(), "package.json");
@@ -44,5 +46,7 @@ async function runSteps(error, bumpRecommendation) {
 
   
 }
+
+console.log("conventionalRecommendedBump")
 
 conventionalRecommendedBump({ preset: `angular` }, runSteps);
