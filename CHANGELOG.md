@@ -1,5 +1,11 @@
 
 
+## [0.112.0](https://github.com/asilas-soap/lerna-started-example/compare/v0.111.0...v0.112.0) (2024-03-26)
+
+## [0.112.0-rc.1](https://github.com/asilas-soap/lerna-started-example/compare/v0.111.0...v0.112.0) (2024-03-26)
+
+## [0.112.0-rc.0](https://github.com/asilas-soap/lerna-started-example/compare/v0.111.0...v0.112.0) (2024-03-26)
+
 ## [0.111.0](https://github.com/asilas-soap/lerna-started-example/compare/v0.110.0...v0.111.0) (2024-03-26)
 
 
