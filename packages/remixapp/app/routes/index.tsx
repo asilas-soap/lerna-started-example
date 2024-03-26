@@ -7,6 +7,7 @@ export default function Index() {
             <Header/>
             <div>
                 Remix app Content!
+                Force commit
             </div>
             <Footer/>
         </>
