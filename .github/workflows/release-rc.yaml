@@ -1,3 +1,7 @@
+on:
+  workflow_dispatch:
+  - release/*
+
 jobs:
   release:
     runs-on: ubuntu-latest
