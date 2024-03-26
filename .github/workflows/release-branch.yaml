@@ -1,3 +1,8 @@
+on:
+  workflow_dispatch:
+    branches:
+    - main
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -9,8 +14,14 @@ jobs:
         run: |
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+      
       - run: yarn install
-      - run: yarn run release --increment=minor --preRelease=rc
+      - run: yarn run release --increment=minor --preRelease=rc --no-plugins.@release-it/conventional-changelog.infile
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: git push
+        run: |
+          git branch -b releases/0.112.x
+          git push --set-upstream origin releases/0.112.x
