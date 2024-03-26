@@ -1,5 +1,32 @@
 
 
+## [0.111.0](https://github.com/asilas-soap/lerna-started-example/compare/v0.110.0...v0.111.0) (2024-03-26)
+
+
+### Bug Fixes
+
+* yaml configs ([2bdac60](https://github.com/asilas-soap/lerna-started-example/commit/2bdac607f618392e9ddfe8546fbc9d63c07db078))
+* yaml configs ([edbce75](https://github.com/asilas-soap/lerna-started-example/commit/edbce7557087c8acece0509495c235bfc4542125))
+
+## [0.111.0-rc.3](https://github.com/asilas-soap/lerna-started-example/compare/v0.110.0...v0.111.0) (2024-03-26)
+
+
+### Bug Fixes
+
+* **header:** remove force ([78e33bf](https://github.com/asilas-soap/lerna-started-example/commit/78e33bf6ebef0d971f3cacc9d0cb4b80b11a7b4b))
+
+## [0.111.0-rc.2](https://github.com/asilas-soap/lerna-started-example/compare/v0.110.0...v0.111.0) (2024-03-26)
+
+## [0.111.0-rc.1](https://github.com/asilas-soap/lerna-started-example/compare/v0.110.0...v0.111.0) (2024-03-26)
+
+
+### Bug Fixes
+
+* yaml configs ([19156bb](https://github.com/asilas-soap/lerna-started-example/commit/19156bbde5bd8f09234c0c6c6db7e2c59358c5cc))
+* yaml file ([1c8f897](https://github.com/asilas-soap/lerna-started-example/commit/1c8f897e5abc25fb5e3338e8a5a7c5a6912f5238))
+
+## [0.111.0-rc.0](https://github.com/asilas-soap/lerna-started-example/compare/v0.110.0...v0.111.0) (2024-03-26)
+
 ## [0.111.0-rc.3](https://github.com/asilas-soap/lerna-started-example/compare/v0.111.0-rc.2...v0.111.0-rc.3) (2024-03-26)
 
 
