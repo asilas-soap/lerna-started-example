@@ -1,5 +1,12 @@
 
 
+## [0.109.0-1](https://github.com/asilas-soap/lerna-started-example/compare/v0.109.0-0...v0.109.0-1) (2024-03-26)
+
+
+### Features
+
+* **footer:** force commit ([9c5ce90](https://github.com/asilas-soap/lerna-started-example/commit/9c5ce9069d7a37afe37f46d9832b5bb2f625898d))
+
 ## [0.109.0-0](https://github.com/asilas-soap/lerna-started-example/compare/v0.109.0...v0.109.0-0) (2024-03-26)
 
 
