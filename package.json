@@ -1,7 +1,7 @@
 {
   "name": "root",
   "private": true,
-  "version": "0.110.0-rc.2",
+  "version": "0.110.0",
   "devDependencies": {
     "@release-it/conventional-changelog": "^8.0.1",
     "conventional-github-releaser": "^3.1.5",
