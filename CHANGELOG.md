@@ -1,5 +1,15 @@
 
 
+## [0.111.0-rc.2](https://github.com/asilas-soap/lerna-started-example/compare/v0.111.0-rc.1...v0.111.0-rc.2) (2024-03-26)
+
+## [0.111.0-rc.1](https://github.com/asilas-soap/lerna-started-example/compare/v0.111.0-rc.0...v0.111.0-rc.1) (2024-03-26)
+
+
+### Bug Fixes
+
+* yaml configs ([19156bb](https://github.com/asilas-soap/lerna-started-example/commit/19156bbde5bd8f09234c0c6c6db7e2c59358c5cc))
+* yaml file ([1c8f897](https://github.com/asilas-soap/lerna-started-example/commit/1c8f897e5abc25fb5e3338e8a5a7c5a6912f5238))
+
 ## [0.110.0](https://github.com/asilas-soap/lerna-started-example/compare/v0.109.0...v0.110.0) (2024-03-26)
 
 ## [0.110.0-rc.2](https://github.com/asilas-soap/lerna-started-example/compare/v0.109.0...v0.110.0) (2024-03-26)
