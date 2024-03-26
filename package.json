@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.107.9",
   "devDependencies": {
+    "@release-it/conventional-changelog": "^8.0.1",
     "conventional-github-releaser": "^3.1.5",
     "lerna": "^8.0.1",
     "release-it": "^17.1.1"
