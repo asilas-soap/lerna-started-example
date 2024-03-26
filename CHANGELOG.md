@@ -1,3 +1,12 @@
+
+
+## [0.109.0](https://github.com/asilas-soap/lerna-started-example/compare/v0.108.0...v0.109.0) (2024-03-26)
+
+
+### Features
+
+* add release-it json ([0f0bf6f](https://github.com/asilas-soap/lerna-started-example/commit/0f0bf6fc993ba18f90cc41cd385538dfc5960326))
+
 ## [0.107.6](https://github.com/asilas-soap/lerna-started-example/compare/v0.107.5...v0.107.6) (2024-03-15)
 
 
@@ -32,6 +41,3 @@
 ### Bug Fixes
 
 * add ([53bfded](https://github.com/asilas-soap/lerna-started-example/commit/53bfded259cc156d63675c81c2f56b3bba8faddf))
-
-
-
