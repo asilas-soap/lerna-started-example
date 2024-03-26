@@ -5,7 +5,6 @@ export function Header() {
         <header>
             Lerna is the original monorepo tool! Enjoy this amazing tool.
             Force commit.
-            Force.
         </header>
     );
 }
