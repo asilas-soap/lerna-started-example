@@ -1,6 +1,7 @@
 on:
   workflow_dispatch:
-  - main
+    branches:
+    - release/*
 
 jobs:
   release:
