@@ -1,5 +1,12 @@
 
 
+## [0.110.0-rc.2](https://github.com/asilas-soap/lerna-started-example/compare/v0.110.0-rc.1...v0.110.0-rc.2) (2024-03-26)
+
+
+### Bug Fixes
+
+* **header:** force ([7bd6cee](https://github.com/asilas-soap/lerna-started-example/commit/7bd6cee4bcff08b79781ab38e26169898e2c61e9))
+
 ## [0.110.0-rc.1](https://github.com/asilas-soap/lerna-started-example/compare/v0.110.0-rc.0...v0.110.0-rc.1) (2024-03-26)
 
 
