@@ -9,6 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
           fetch-depth: 0
       - name: git config
         run: |
