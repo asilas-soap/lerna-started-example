@@ -4,6 +4,7 @@ export function Footer() {
     return (
         <footer>
             Footer component.
+            Force commit.
         </footer>
     );
 }
