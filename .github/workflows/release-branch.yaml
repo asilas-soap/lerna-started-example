@@ -23,5 +23,5 @@ jobs:
       
       - name: git push
         run: |
-          git branch -b releases/0.112.x
+          git checkout -b releases/0.112.x
           git push --set-upstream origin releases/0.112.x
