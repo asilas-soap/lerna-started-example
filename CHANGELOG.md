@@ -1,5 +1,7 @@
 
 
+## [0.109.0](https://github.com/asilas-soap/lerna-started-example/compare/v0.109.0-1...v0.109.0) (2024-03-26)
+
 ## [0.109.0-1](https://github.com/asilas-soap/lerna-started-example/compare/v0.109.0-0...v0.109.0-1) (2024-03-26)
 
 
